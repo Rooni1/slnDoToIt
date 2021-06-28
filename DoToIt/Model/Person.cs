@@ -6,7 +6,7 @@ namespace ToDoIt.Model
 {
     public class Person
     {
-        readonly int id;
+        public readonly int id;
         string firstName;
         string lastName;
         static int idCounter = 0;
