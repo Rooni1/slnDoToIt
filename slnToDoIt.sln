@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoToIt", "DoToIt\DoToIt.csproj", "{83ECC5E4-0830-4D67-8ED6-602E5314A039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoIt", "DoToIt\ToDoIt.csproj", "{83ECC5E4-0830-4D67-8ED6-602E5314A039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoIt.Test", "ToDoIt.Test\ToDoIt.Test.csproj", "{B71F4F6E-F28B-4072-852B-902FFBB1D245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{83ECC5E4-0830-4D67-8ED6-602E5314A039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83ECC5E4-0830-4D67-8ED6-602E5314A039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83ECC5E4-0830-4D67-8ED6-602E5314A039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71F4F6E-F28B-4072-852B-902FFBB1D245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71F4F6E-F28B-4072-852B-902FFBB1D245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71F4F6E-F28B-4072-852B-902FFBB1D245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71F4F6E-F28B-4072-852B-902FFBB1D245}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
