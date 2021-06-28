@@ -13,17 +13,38 @@ namespace ToDoIt.Test
         public void AddPersons()
         {
             // Arrange
-            string firstName = "Ali";
-            string lastName = "Usman";
+            string expectedFirstName = "Ali";
+            string expectedLastName = "Usman";
+            Person TestPerson = new Person(expectedFirstName, expectedLastName);
 
             // Act
+            string actualFirstName = TestPerson.FirstName;
+            string actualLastName = TestPerson.LastName;
 
-            Person TestPerson = new Person(firstName, lastName);
 
             // Assert
-            Assert.Contains(firstName,TestPerson.FirstName);
-            Assert.Contains(lastName, TestPerson.LastName);
-            
+            //Assert.Contains(expectedFirstName, actualFirstName);
+            //Assert.Contains(expectedLastName, actualLastName);
+            Assert.Equal(expectedFirstName, actualFirstName);
+            Assert.Equal(expectedLastName, actualLastName);
+
+
+        }
+        [Fact]
+        public void PersonIdWorks()
+        {
+            //Arrange
+            string expectedFirstName  = "Mossa";
+            string expectedLastName   = "Ali";
+            string expectedFirstName1 = "Umaima";
+            string expectedLastName1  = "Munir";
+
+            //Act
+            Person Testperson1 = new Person(expectedFirstName, expectedLastName);
+            Person Testperson2 = new Person(expectedFirstName1, expectedLastName1);
+
+            //Assert
+            Assert.NotEqual(Testperson1.id, Testperson2.id);
 
         }
     }
