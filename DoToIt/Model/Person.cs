@@ -9,8 +9,8 @@ namespace ToDoIt.Model
         public readonly int id;
         string firstName;
         string lastName;
-        static int idCounter = 0;
-        public static int Counter { get { return idCounter; } }
+        //static int idCounter = 0;
+        //public static int Counter { get { return idCounter; } }
         public string FirstName
         {
             get { return firstName; }
@@ -43,7 +43,7 @@ namespace ToDoIt.Model
         }
         public Person(string firstName, string lastName) //Constructor
         {
-            id = ++idCounter;
+            //id = ++idCounter;
             FirstName = firstName;
             LastName = lastName;
 
