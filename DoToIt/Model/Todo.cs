@@ -39,5 +39,11 @@ namespace ToDoIt.Model
             this.todoId = todoId;
         }
 
+        //Assign Todo to Person
+        public void AssignPerson(Person person)
+        {
+            this.assignee = person;
+        }
+
     }
 }
