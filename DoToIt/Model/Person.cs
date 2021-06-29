@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,11 +6,11 @@ namespace ToDoIt.Model
 {
     public class Person
     {
-        public readonly int id;
+        private readonly int personId;
         string firstName;
         string lastName;
-        //static int idCounter = 0;
-        //public static int Counter { get { return idCounter; } }
+      
+        public int PersonId  { get { return personId; } }
         public string FirstName
         {
             get { return firstName; }
@@ -41,9 +41,9 @@ namespace ToDoIt.Model
                 }
             }
         }
-        public Person(string firstName, string lastName) //Constructor
+        public Person(string firstName, string lastName,int personId) //Constructor
         {
-            //id = ++idCounter;
+            this.personId = personId;
             FirstName = firstName;
             LastName = lastName;
 

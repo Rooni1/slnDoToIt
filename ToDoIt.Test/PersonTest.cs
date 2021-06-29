@@ -15,11 +15,13 @@ namespace ToDoIt.Test
             // Arrange
             string expectedFirstName = "Ali";
             string expectedLastName = "Usman";
-            Person TestPerson = new Person(expectedFirstName, expectedLastName);
+            int expectedPersonId = 1;
+            Person TestPerson = new Person(expectedFirstName, expectedLastName, expectedPersonId);
 
             // Act
             string actualFirstName = TestPerson.FirstName;
             string actualLastName = TestPerson.LastName;
+            int actualPersonId = TestPerson.PersonId;
 
 
             // Assert
@@ -27,6 +29,7 @@ namespace ToDoIt.Test
             //Assert.Contains(expectedLastName, actualLastName);
             Assert.Equal(expectedFirstName, actualFirstName);
             Assert.Equal(expectedLastName, actualLastName);
+            Assert.Equal(expectedPersonId, actualPersonId);
 
 
         }
@@ -34,17 +37,19 @@ namespace ToDoIt.Test
         public void PersonIdWorks()
         {
             //Arrange
+            int expectedPersonId = 1;
             string expectedFirstName  = "Mossa";
             string expectedLastName   = "Ali";
+            int expectedPersonId1 = 2;
             string expectedFirstName1 = "Umaima";
             string expectedLastName1  = "Munir";
 
             //Act
-            Person Testperson1 = new Person(expectedFirstName, expectedLastName);
-            Person Testperson2 = new Person(expectedFirstName1, expectedLastName1);
+            Person Testperson1 = new Person(expectedFirstName, expectedLastName, expectedPersonId);
+            Person Testperson2 = new Person(expectedFirstName1, expectedLastName1, expectedPersonId1);
 
             //Assert
-            Assert.NotEqual(Testperson1.id, Testperson2.id);
+            Assert.NotEqual(Testperson1.PersonId, Testperson2.PersonId);
 
         }
     }
