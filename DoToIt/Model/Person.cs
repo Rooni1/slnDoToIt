@@ -6,10 +6,11 @@ namespace ToDoIt.Model
 {
     public class Person
     {
+        // Private fields
         private readonly int personId;
         string firstName;
         string lastName;
-      
+        // Public properties
         public int PersonId  { get { return personId; } }
         public string FirstName
         {
@@ -48,6 +49,7 @@ namespace ToDoIt.Model
             LastName = lastName;
 
         }
+       
 
     }
 }
