@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using ToDoIt.Data;
 using ToDoIt.Model;
+using System.Linq;
 
 namespace ToDoIt.Test
 {
@@ -184,6 +185,98 @@ namespace ToDoIt.Test
 
             //Assert
             Assert.NotEqual(testArray[0].ToDoId, testArray[1].ToDoId);
+            
+
+        }
+
+        [Fact]
+        public void CheckForStatus()
+        {
+            //Arrange
+            TodoItems sut = new TodoItems();
+            sut.Clear();
+            TodoSequencer.ResetTodo();
+
+            bool notDone = false;
+            bool done = true;
+   
+            string desc1 = "Fish";
+            string desc2 = "Veggies";
+            string desc3 = "Beans";
+            string desc4 = "Meat";
+            string desc5 = "Cigg";
+
+            int expectedArrayLength1 = 2;
+            int expectedArrayLength2 = 3;
+
+            sut.AddItemToTodoArray(desc1);
+            sut.AddItemToTodoArray(desc2);
+            sut.AddItemToTodoArray(desc3);
+            sut.AddItemToTodoArray(desc4);
+            sut.AddItemToTodoArray(desc5);
+
+            Todo[] testArray = sut.FindAll();
+            testArray[0].TodoStatus(notDone);
+            testArray[1].TodoStatus(done);
+            testArray[2].TodoStatus(done);
+            testArray[3].TodoStatus(done);
+            testArray[4].TodoStatus(notDone);
+           
+            //Act
+            Todo[] actualStatus = sut.FindByDoneStatus(notDone);
+            Todo[] actualStatus2 = sut.FindByDoneStatus(done);
+
+
+            //Assert
+            Assert.Equal(expectedArrayLength1, actualStatus.Length);
+            Assert.Equal(expectedArrayLength2, actualStatus2.Length);
+            Assert.Equal(desc1, actualStatus[0].Description);
+            Assert.Equal(desc4, actualStatus2[2].Description);
+
+          //  Assert.Equal(todo1, actualStatus.Contains(todo1));
+
+       
+        }
+
+        [Fact]
+        public void CheckForId()
+        {
+
+            //Arrange
+            string expectedFirstName = "Haroon";
+            string expectedLastName = "Munir";
+
+            int expectedId = 1;
+
+            Person newWorker = new Person(expectedFirstName, expectedLastName, expectedId);
+
+            TodoItems sut = new TodoItems();
+            sut.Clear();
+            PersonSequencer.Reset();
+            TodoSequencer.ResetTodo();
+
+            string desc1 = "Fish";
+            string desc2 = "Veggies";
+            string desc3 = "Beans";
+            string desc4 = "Meat";
+            string desc5 = "Cigg";
+
+            sut.AddItemToTodoArray(desc1);
+            sut.AddItemToTodoArray(desc2);
+            sut.AddItemToTodoArray(desc3);
+            sut.AddItemToTodoArray(desc4);
+            sut.AddItemToTodoArray(desc5);
+
+            Todo[] testArray = sut.FindAll();
+          
+            testArray[0].AssignPerson(newWorker);
+            testArray[3].AssignPerson(newWorker);
+
+            //Act
+            Todo[] actual = sut.FindByAssignee(PersonSequencer.nextPersonId());
+
+            //Assert
+            Assert.Equal(expectedId, actual[0].Assignee.PersonId);
             
 
         }
