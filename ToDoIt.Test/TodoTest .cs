@@ -50,5 +50,32 @@ namespace ToDoIt.Test
             //Assert
             Assert.False(sut.Done);
         }
+
+        [Fact]
+        public void AssigneeIsNullIfNotAssigned()
+        {
+            //Arrange
+            Todo sut = new Todo("desc", 0);
+
+            //Assert
+            Assert.Null(sut.Assignee);
+        }
+
+        [Fact]
+        public void AssigneeGetAssigned()
+        {
+            //Arrange
+            string firstName = "Jane";
+            string lastName = "Doe";
+            int id = 1;
+            Todo sut = new Todo("Desc", 0);
+            Person expected = new Person(firstName, lastName, id);
+
+            //Act
+            sut.AssignPerson(expected);
+
+            //Assert
+            Assert.Equal(expected, sut.Assignee);
+        }
     }
 }
