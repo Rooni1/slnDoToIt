@@ -52,5 +52,11 @@ namespace ToDoIt.Model
             return $"ID: {ToDoId}\nDescription: {Description}\nStatus: {(status = Done == true ? "Done":"Not Finished")}";
         }
 
+        public void TodoStatus(bool status)
+        {
+
+            this.done = status;
+        }
+
     }
 }
