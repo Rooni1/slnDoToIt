@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using ToDoIt.Data;
+using ToDoIt.Model;
 
 
 
 namespace ToDoIt
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            
-           
+
+          
+
         }
     }
 
