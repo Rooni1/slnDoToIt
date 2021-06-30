@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ToDoIt.Data;
-using ToDoIt.Model;
 
 
 
@@ -11,9 +9,8 @@ namespace ToDoIt
     {
         static void Main(string[] args)
         {
-
-          
-
+            
+           
         }
     }
 

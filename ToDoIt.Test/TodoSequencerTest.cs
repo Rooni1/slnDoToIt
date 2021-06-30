@@ -25,6 +25,7 @@ namespace ToDoIt.Test
         public void ReturnThreeAfterThreeCalls()
         {
             //Arrange
+            TodoSequencer.ResetTodo();
             int expected = 3;
             for (int i = 0; i < 2; i++)
             {
@@ -41,6 +42,7 @@ namespace ToDoIt.Test
         public void ResettodoIdToZero()
         {
             //Arrange
+            TodoSequencer.ResetTodo();
             int expectedBeforeReset = 3;
             int expectedAfterReset = 0;
             for (int i = 0; i < 2; i++)

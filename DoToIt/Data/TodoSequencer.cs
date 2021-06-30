@@ -11,7 +11,7 @@ namespace ToDoIt.Data
         //Public Props
         public static int TodoId { get { return todoId; } }
 
-        //Increments todoId and returns it
+        //Increments todoId and returns it, is used to give Todo items unique ids
         public static int NextTodoId()
         {
             return ++todoId;
