@@ -122,17 +122,38 @@ namespace ToDoIt.Data
                     indexToBeRemoved = i;
                     break;
                 }
-               
+
             }
 
+            if (TodoArray[indexToBeRemoved].Description.Equals(descriptionToRemove))
+            {
+                int lengthOfArray = Size() - 1;
+                if (indexToBeRemoved == TodoArray.Length - 1)
+                {
+                    Array.Resize(ref TodoArray, lengthOfArray);
+                }
+                else
+                {
 
+                    int testIndex = indexToBeRemoved;
+                    indexToBeRemoved = TodoArray.Length - 1;
+                    TodoArray[testIndex] = TodoArray[indexToBeRemoved];
+                    Array.Resize(ref TodoArray, TodoArray.Length - 1);
 
+                }
 
+            }
 
+            return TodoArray;
 
-            return whichArray;
         }
-            
+        public Todo[] ResizedArray(Todo[] whatArray, int i)
+        {
+            Array.Resize(ref whatArray, whatArray.Length + 1);
+            whatArray[whatArray.Length - 1] = TodoArray[i];
+
+            return whatArray;
+        }
 
     }
 }
