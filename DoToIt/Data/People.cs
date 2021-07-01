@@ -43,5 +43,29 @@ namespace ToDoIt.Data
         {
             Array.Clear(personArray,0,personArray.Length);
         }
+
+        public Person[] RemovePersonFromPeopleArray(Person personToRemove)
+        {
+            int personIndexNumber = -1;
+
+            for (int i = 0; i < personArray.Length; i++)
+            {
+
+                if(personArray[i] == personToRemove)
+                {
+                    personIndexNumber = i;
+                    break;
+                }
+            }
+            if (personArray.Contains(personToRemove))
+            {
+                if (Size() - 1 != personIndexNumber)//If Arrays last index is not the indexNumber, than replay the index value of the Index number 					//with last index value. 
+                {
+                    personArray[personIndexNumber] = personArray[Size() - 1];
+                }
+                Array.Resize(ref personArray, Size() - 1);
+            }
+            return personArray;
+        }
     }
 }

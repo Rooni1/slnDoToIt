@@ -58,8 +58,7 @@ namespace ToDoIt.Data
 
                 if (doneStatus == TodoArray[i].Done)
                 {
-                    Array.Resize(ref statusArray, statusArray.Length + 1);
-                    statusArray[statusArray.Length - 1] = TodoArray[i];
+                    statusArray = ResizedArray(statusArray, i);
                 }
             }
             return statusArray;
@@ -73,8 +72,7 @@ namespace ToDoIt.Data
             {
                 if (TodoArray[i].Assignee != null && personId == TodoArray[i].Assignee.PersonId)
                 {
-                    Array.Resize(ref idAssignArray, idAssignArray.Length + 1);
-                    idAssignArray[idAssignArray.Length - 1] = TodoArray[i];
+                    idAssignArray = ResizedArray(idAssignArray, i);
                 }
             }
             return idAssignArray;
@@ -93,8 +91,7 @@ namespace ToDoIt.Data
             {
                 if (TodoArray[i].Assignee != null && TodoArray[i].Assignee == assignee)
                 {
-                    Array.Resize(ref assigneePersonArray, assigneePersonArray.Length + 1);
-                    assigneePersonArray[assigneePersonArray.Length - 1] = TodoArray[i];
+                    assigneePersonArray = ResizedArray(assigneePersonArray, i);
                 }
             }
 
@@ -108,13 +105,12 @@ namespace ToDoIt.Data
             {
                 if (TodoArray[i].Assignee == null)
                 {
-                    Array.Resize(ref unassignedToDoItems, unassignedToDoItems.Length + 1);
-                    unassignedToDoItems[unassignedToDoItems.Length - 1] = TodoArray[i];
+                    unassignedToDoItems = ResizedArray(unassignedToDoItems, i);
                 }
             }
             return unassignedToDoItems;
 
-                      
+               
         }
         public Todo[] RemoveItem(string descriptionToRemove)
         {
@@ -129,34 +125,14 @@ namespace ToDoIt.Data
                
             }
 
-            if(TodoArray[indexToBeRemoved].Description.Equals(descriptionToRemove))
-            {
-                int lengthOfArray = Size()-1;
-                if(indexToBeRemoved == TodoArray.Length-1)
-                {
-                    Array.Resize(ref TodoArray, lengthOfArray);
-                }
-                else
-                {
-                                          
-                    int testIndex = indexToBeRemoved;
-                    indexToBeRemoved = TodoArray.Length - 1;
-                    TodoArray[testIndex] = TodoArray[indexToBeRemoved]; 
-                    Array.Resize(ref TodoArray, TodoArray.Length - 1);
 
-                }
 
-            }
 
-            return TodoArray;
-             
+
+
+            return whichArray;
         }
-
-
-
-
-
-
+            
 
     }
 }
