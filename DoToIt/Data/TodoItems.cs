@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using ToDoIt.Model;
+using System.Linq;
 
 namespace ToDoIt.Data
 {
@@ -115,7 +116,41 @@ namespace ToDoIt.Data
 
                       
         }
+        public Todo[] RemoveItem(string descriptionToRemove)
+        {
+            int indexToBeRemoved = -1;
+            for (int i = 0; i < TodoArray.Length; i++)
+            {
+                if (TodoArray[i].Description.Equals(descriptionToRemove))
+                {
+                    indexToBeRemoved = i;
+                    break;
+                }
+               
+            }
 
+            if(TodoArray[indexToBeRemoved].Description.Equals(descriptionToRemove))
+            {
+                int lengthOfArray = Size()-1;
+                if(indexToBeRemoved == TodoArray.Length-1)
+                {
+                    Array.Resize(ref TodoArray, lengthOfArray);
+                }
+                else
+                {
+                                          
+                    int testIndex = indexToBeRemoved;
+                    indexToBeRemoved = TodoArray.Length - 1;
+                    TodoArray[testIndex] = TodoArray[indexToBeRemoved]; 
+                    Array.Resize(ref TodoArray, TodoArray.Length - 1);
+
+                }
+
+            }
+
+            return TodoArray;
+             
+        }
 
 
 
