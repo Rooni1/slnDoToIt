@@ -85,7 +85,36 @@ namespace ToDoIt.Data
         {
             Array.Resize(ref TodoArray, 0);
         }
+        public Todo[] FindByAssignee(Person assignee)
+        {
+            Todo[] assigneePersonArray = new Todo[0];
+            for(int i = 0; i < TodoArray.Length; i++)
+            {
+                if (TodoArray[i].Assignee != null && TodoArray[i].Assignee == assignee)
+                {
+                    Array.Resize(ref assigneePersonArray, assigneePersonArray.Length + 1);
+                    assigneePersonArray[assigneePersonArray.Length - 1] = TodoArray[i];
+                }
+            }
 
+            return assigneePersonArray;
+        }
+        public Todo[] FindUnassignedTodoItems()
+        {
+            Todo[] unassignedToDoItems = new Todo[0];
+            
+            for (int i = 0; i < TodoArray.Length; i++)
+            {
+                if (TodoArray[i].Assignee == null)
+                {
+                    Array.Resize(ref unassignedToDoItems, unassignedToDoItems.Length + 1);
+                    unassignedToDoItems[unassignedToDoItems.Length - 1] = TodoArray[i];
+                }
+            }
+            return unassignedToDoItems;
+
+                      
+        }
 
 
 

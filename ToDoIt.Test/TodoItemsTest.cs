@@ -13,9 +13,11 @@ namespace ToDoIt.Test
         [Fact]
         public void ReturnZeroAtTheStart()
         {
-            //Arrange          
+            //Arrange
+            
             int exptected = 0;
             TodoItems sut = new TodoItems();
+            sut.Clear();
             TodoSequencer.ResetTodo();
 
             //Act
@@ -271,12 +273,125 @@ namespace ToDoIt.Test
           
             testArray[0].AssignPerson(newWorker);
             testArray[3].AssignPerson(newWorker);
+            
 
             //Act
             Todo[] actual = sut.FindByAssignee(PersonSequencer.nextPersonId());
 
             //Assert
             Assert.Equal(expectedId, actual[0].Assignee.PersonId);
+            
+
+        }
+        [Fact]
+        public void FindByPerson()
+        {
+
+            //Arrange
+            bool notDone = false;
+            bool done = true;
+            string expectedFirstName = "Billy";
+            string expectedLastName = "Rosehag";
+            int expectedId = 1;
+
+            string expectedFirstName1 = "Haroon";
+            string expectedLastName1 = "Munir";
+            int expectedId1 = 2;
+
+            Person workAssignee = new Person(expectedFirstName, expectedLastName, expectedId);
+            Person workAssignee1 = new Person(expectedFirstName1, expectedLastName1, expectedId1);
+
+            TodoItems sut = new TodoItems();
+            sut.Clear();
+            PersonSequencer.Reset();
+            TodoSequencer.ResetTodo();
+
+            string desc1 = "Fish";
+            string desc2 = "Veggies";
+            string desc3 = "Beans";
+            string desc4 = "Meat";
+            string desc5 = "Cigg";
+
+            sut.AddItemToTodoArray(desc1);
+            sut.AddItemToTodoArray(desc2);
+            sut.AddItemToTodoArray(desc3);
+            sut.AddItemToTodoArray(desc4);
+            sut.AddItemToTodoArray(desc5);
+
+            Todo[] testArray = sut.FindAll();
+
+            testArray[0].AssignPerson(workAssignee);
+            testArray[3].AssignPerson(workAssignee1);
+            testArray[0].TodoStatus(done);
+            testArray[3].TodoStatus(notDone);
+
+            //Act
+            Todo[] actual = sut.FindByAssignee(workAssignee);
+            Todo[] actual1 = sut.FindByAssignee(workAssignee1);
+
+
+            //Assert
+            Assert.Equal(expectedFirstName, actual[0].Assignee.FirstName);
+            Assert.Equal(expectedLastName, actual[0].Assignee.LastName);
+            Assert.Equal(expectedId, actual[0].Assignee.PersonId);
+
+            Assert.Equal(expectedFirstName1, actual1[0].Assignee.FirstName);
+            Assert.Equal(expectedLastName1, actual1[0].Assignee.LastName);
+            Assert.NotEqual(actual[0].Assignee.PersonId,actual1[0].Assignee.PersonId);
+
+        }
+        [Fact]
+        public void FindUnassignedTodoItems()
+        {
+
+            //Arrange
+           
+            string expectedFirstName = "Billy";
+            string expectedLastName = "Rosehag";
+            int expectedId = 1;
+
+            string expectedFirstName1 = "Haroon";
+            string expectedLastName1 = "Munir";
+            int expectedId1 = 2;
+
+            Person workAssignee = new Person(expectedFirstName, expectedLastName, expectedId);
+            Person workAssignee1 = new Person(expectedFirstName1, expectedLastName1, expectedId1);
+
+            TodoItems sut = new TodoItems();
+            sut.Clear();
+            PersonSequencer.Reset();
+            TodoSequencer.ResetTodo();
+
+            string desc1 = "Fish";
+            string desc2 = "Veggies";
+            string desc3 = "Beans";
+            string desc4 = "Meat";
+            string desc5 = "Cigg";
+
+            sut.AddItemToTodoArray(desc1);
+            sut.AddItemToTodoArray(desc2);
+            sut.AddItemToTodoArray(desc3);
+            sut.AddItemToTodoArray(desc4);
+            sut.AddItemToTodoArray(desc5);
+
+            Todo[] testArray = sut.FindAll();
+
+            testArray[0].AssignPerson(workAssignee);
+            testArray[3].AssignPerson(workAssignee1);
+           
+
+            //Act
+            Todo[] actual = sut.FindUnassignedTodoItems();
+            Todo[] actual1 = sut.FindUnassignedTodoItems();
+
+
+            //Assert
+
+            Assert.Null(actual[0].Assignee);
+            Assert.NotEqual(testArray.Length,actual.Length);
+            Assert.NotEqual(testArray.Length, actual1.Length);
+            
+
             
 
         }
