@@ -39,6 +39,37 @@ namespace ToDoIt.Test
             Assert.Contains(actualPerson, testPersonArray);
             Assert.Contains(actualPerson1, testPersonArray);
             Assert.NotEqual(actualPerson.PersonId, actualPerson1.PersonId);
+        }
+
+        [Fact]
+        public void RemovePerson()
+        {
+            // Arrange
+            string expectedFirstName = "Ali";
+            string expectedLastName = "Usman";
+
+            string expectedFirstName1 = "Mossa";
+            string expectedLastName1 = "Ali";
+          
+
+            string expectedFirstName2 = "Laura";
+            string expectedLastName2 = "Alison";
+
+            // Act
+
+            People actualPeople = new People();
+            Person actualPerson = actualPeople.AddPerson(expectedFirstName, expectedLastName);
+            Person actualPerson1 = actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
+            Person actualPerson2 = actualPeople.AddPerson(expectedFirstName2, expectedLastName2);
+            Person[] testPersonArray = actualPeople.FindAll();
+
+            //Act
+            Person[] actualArray = actualPeople.RemovePersonFromPeopleArray(actualPerson);
+
+            //Assert
+            Assert.Equal(testPersonArray[0], actualArray[0]);
+            Assert.NotEqual(testPersonArray.Length, actualArray.Length);
+
 
         }
        
