@@ -45,13 +45,14 @@ namespace ToDoIt.Model
         {
             this.assignee = person;
         }
-
+        // Prints out info about the Todo item
         public override string ToString()
         {
             string status;
             return $"ID: {ToDoId}\nDescription: {Description}\nStatus: {(status = Done == true ? "Done":"Not Finished")}";
         }
 
+        // Sets the done status
         public void TodoStatus(bool status)
         {
 
