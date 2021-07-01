@@ -390,10 +390,36 @@ namespace ToDoIt.Test
             Assert.Null(actual[0].Assignee);
             Assert.NotEqual(testArray.Length,actual.Length);
             Assert.NotEqual(testArray.Length, actual1.Length);
-            
+        }
+        [Fact]
+        public void RemovedItemTest()
+        {
+            //Arrange
+            TodoItems sut = new TodoItems();
+            sut.Clear();
+            PersonSequencer.Reset();
+            TodoSequencer.ResetTodo();
 
-            
+            string desc1 = "Fish";
+            string desc2 = "Veggies";
+            string desc3 = "Beans";
+            string desc4 = "Meat";
+            string desc5 = "Cigg";
 
+            sut.AddItemToTodoArray(desc1);
+            sut.AddItemToTodoArray(desc2);
+            sut.AddItemToTodoArray(desc3);
+            sut.AddItemToTodoArray(desc4);
+            sut.AddItemToTodoArray(desc5);
+
+            Todo[] testArray = sut.FindAll();
+
+            //Act
+            Todo[] actualArray = sut.RemoveItem("Fish");
+
+            //Assert
+            Assert.NotEqual(testArray.Length, actualArray.Length);
+            Assert.Equal("Cigg",actualArray[0].Description);
         }
 
     }
