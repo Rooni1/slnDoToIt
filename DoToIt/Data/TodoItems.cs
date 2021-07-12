@@ -8,7 +8,7 @@ namespace ToDoIt.Data
 {
     public class TodoItems
     {
-
+        //An array that gets filled with Todo items
         private static Todo[] TodoArray = new Todo[0];
 
         public int Size()
@@ -49,6 +49,7 @@ namespace ToDoIt.Data
             return newTodo;
         }
 
+        //Returns an array of items with the matching status
         public Todo[] FindByDoneStatus(bool doneStatus)
         {
             Todo[] statusArray = new Todo[0];
@@ -64,6 +65,7 @@ namespace ToDoIt.Data
             return statusArray;
         }
 
+        //Returns an array of items with items given to assignee with a certain personid
         public Todo[] FindByAssignee(int personId)
         {
             Todo[] idAssignArray = new Todo[0];
@@ -78,12 +80,13 @@ namespace ToDoIt.Data
             return idAssignArray;
         }
 
-
         //Removes all the items in the array and gives it a size of zero
         public void Clear()
         {
             Array.Resize(ref TodoArray, 0);
         }
+
+        //Returns An array with items given to a certain  assignee
         public Todo[] FindByAssignee(Person assignee)
         {
             Todo[] assigneePersonArray = new Todo[0];
@@ -97,6 +100,8 @@ namespace ToDoIt.Data
 
             return assigneePersonArray;
         }
+
+        //Return an array with items without a assigned person to it
         public Todo[] FindUnassignedTodoItems()
         {
             Todo[] unassignedToDoItems = new Todo[0];
@@ -112,6 +117,8 @@ namespace ToDoIt.Data
 
                
         }
+        
+        //Removes an item from the todoArray
         public Todo[] RemoveItem(string descriptionToRemove)
         {
             int indexToBeRemoved = -1;
@@ -147,6 +154,8 @@ namespace ToDoIt.Data
             return TodoArray;
 
         }
+        
+        //Resizes the inputted array with 1 an inputs an object from the todoArray with the index of I
         public Todo[] ResizedArray(Todo[] whatArray, int i)
         {
             Array.Resize(ref whatArray, whatArray.Length + 1);
