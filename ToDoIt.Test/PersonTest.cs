@@ -4,8 +4,6 @@ using Xunit;
 using ToDoIt.Data;
 
 
-
-
 namespace ToDoIt.Test
 {
     public class PersonTest
@@ -54,8 +52,83 @@ namespace ToDoIt.Test
 
             //TestPerson1.PersonId= PersonSequencer.Reset();
         }
-        
-        
-        
+        [Fact]
+
+        public void PersonFirstNameNotNull()
+        {
+            //Arrange
+            string expectedFirstName = null;
+            string expectedLastName = "Usman";
+            int expectedPersonId = 1;
+           
+
+            //Act
+
+            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+                                       new Person(expectedFirstName, expectedLastName, expectedPersonId));
+
+            //Assert
+
+            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtDrinkException.Message);
+
+        }
+        [Fact]
+        public void PersonFirstNameNotEmpty()
+        {
+            //Arrange
+            string expectedFirstName = "";
+            string expectedLastName = "Usman";
+            int expectedPersonId = 1;
+
+            //Act
+
+            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+                                      new Person(expectedFirstName, expectedLastName, expectedPersonId));
+
+            //Assert
+
+            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtDrinkException.Message);
+
+        }
+        [Fact]
+        public void PersonLastNameNotNull()
+        {
+            //Arrange
+            string expectedFirstName = "Ali";
+            string expectedLastName = null;
+            int expectedPersonId = 1;
+
+
+            //Act
+
+            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+                                       new Person(expectedFirstName, expectedLastName, expectedPersonId));
+
+            //Assert
+
+            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtDrinkException.Message);
+
+        }
+        [Fact]
+        public void PersonLastNameNotEmpty()
+        {
+            //Arrange
+            string expectedFirstName = "Ali";
+            string expectedLastName = "";
+            int expectedPersonId = 1;
+
+            //Act
+
+            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+                                      new Person(expectedFirstName, expectedLastName, expectedPersonId));
+
+            //Assert
+
+            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtDrinkException.Message);
+
+        }
+
+
+
     }
 }

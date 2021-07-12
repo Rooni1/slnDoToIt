@@ -72,7 +72,33 @@ namespace ToDoIt.Test
 
 
         }
-       
+        [Fact]
+        public void FindPersonById()
+        {
+            // Arrange
+            string expectedFirstName = "Ali";
+            string expectedLastName = "Usman";
+            int expectedPersonId = 1;
+
+          
+
+
+            // Act
+
+            //Person actualPers = new Person(expectedFirstName, expectedLastName, expectedPersonId);
+            People actualPeople = new People();
+            actualPeople.AddPerson(expectedFirstName, expectedLastName);
+           
+            Person actualPerson = actualPeople.FindById(expectedPersonId);
+          
+
+            // Assert
+            Assert.Equal(expectedPersonId, actualPerson.PersonId);
+           
+
+           
+        }
+
 
     }
 }

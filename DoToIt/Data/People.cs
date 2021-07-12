@@ -20,12 +20,34 @@ namespace ToDoIt.Data
         }
         public Person FindById(int personId)
         {
-            
-            return personArray[personId];
+            //Person testPers = new Person(" "," ", 0);
+            int searchId;
+            for (searchId = 0; searchId < personArray.Length; searchId++)
+            {
+                if (personArray[searchId].PersonId == personId)
+                {
+                    searchId = personId;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("The Person Id you searched does not exist");
+                    return null;
+                }
+            }
+            if (personArray.Length == 1)
+            {
+                searchId = 0;
+                return personArray[searchId];
+            }
+            else
+            {
+                return personArray[searchId];
+            }
         }
         public Person AddPerson(string firstName,string lastName)
         {
-            //personId = PersonSequencer.nextPersonId(); // Assign uniq Id to person.
+           
             Person addPerson = new Person(firstName, lastName, PersonSequencer.nextPersonId());
             // Get size of Array.
             int sizeOfPersonArray = Size();

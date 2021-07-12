@@ -19,7 +19,7 @@ namespace ToDoIt.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("First name can't be empty Please Fill the first name");
+                    throw new ArgumentException("First name can't be empty/null Please Fill the first name");
                 }
                 else
                 {
@@ -34,7 +34,7 @@ namespace ToDoIt.Model
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("Last name can't be empty Please Fill the last name");
+                    throw new ArgumentException("Last name can't be empty/null Please Fill the last name");
                 }
                 else
                 {
