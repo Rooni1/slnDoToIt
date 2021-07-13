@@ -20,30 +20,17 @@ namespace ToDoIt.Data
         }
         public Person FindById(int personId)
         {
-            //Person testPers = new Person(" "," ", 0);
-            int searchId;
-            for (searchId = 0; searchId < personArray.Length; searchId++)
+            Person foundPerson = null;
+            for (int searchIndex = 0; searchIndex < personArray.Length; searchIndex++)
             {
-                if (personArray[searchId].PersonId == personId)
+                if (personArray[searchIndex].PersonId == personId)
                 {
-                    searchId = personId;
+                    foundPerson = personArray[searchIndex];
                     break;
                 }
-                else
-                {
-                    Console.WriteLine("The Person Id you searched does not exist");
-                    return null;
-                }
+             
             }
-            if (personArray.Length == 1)
-            {
-                searchId = 0;
-                return personArray[searchId];
-            }
-            else
-            {
-                return personArray[searchId];
-            }
+            return foundPerson;
         }
         public Person AddPerson(string firstName,string lastName)
         {
@@ -81,7 +68,7 @@ namespace ToDoIt.Data
             }
             if (personArray.Contains(personToRemove))
             {
-                if (Size() - 1 != personIndexNumber)//If Arrays last index is not the indexNumber, than replay the index value of the Index number 					//with last index value. 
+                if (Size() - 1 != personIndexNumber)//If Arrays last index is not the indexNumber, than replay the index value of the Index number //with last index value. 
                 {
                     personArray[personIndexNumber] = personArray[Size() - 1];
                 }

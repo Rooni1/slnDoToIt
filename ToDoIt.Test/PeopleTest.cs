@@ -64,7 +64,7 @@ namespace ToDoIt.Test
             Person[] testPersonArray = actualPeople.FindAll();
 
             //Act
-            Person[] actualArray = actualPeople.RemovePersonFromPeopleArray(actualPerson);
+            Person[] actualArray = actualPeople.RemovePersonFromPeopleArray(actualPerson1);
 
             //Assert
             Assert.Equal(testPersonArray[0], actualArray[0]);
@@ -78,25 +78,56 @@ namespace ToDoIt.Test
             // Arrange
             string expectedFirstName = "Ali";
             string expectedLastName = "Usman";
-            int expectedPersonId = 1;
-
+            string expectedFirstName1 = "Ulf";
+            string expectedLastName1 = "Bengtsson";
+            string expectedFirstName2 = "Umaima";
+            string expectedLastName2 = "Munir";
           
-
-
             // Act
 
-            //Person actualPers = new Person(expectedFirstName, expectedLastName, expectedPersonId);
+           
             People actualPeople = new People();
             actualPeople.AddPerson(expectedFirstName, expectedLastName);
+            Person targetPerson = actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
+            actualPeople.AddPerson(expectedFirstName2, expectedLastName2);
            
-            Person actualPerson = actualPeople.FindById(expectedPersonId);
+
+            Person actualPerson = actualPeople.FindById(targetPerson.PersonId);
           
 
             // Assert
-            Assert.Equal(expectedPersonId, actualPerson.PersonId);
+            Assert.Equal(targetPerson.PersonId, actualPerson.PersonId);
            
+        }
+        [Fact]
+        public void PersonIdNotExist()
+        {
+            // Arrange
+            string expectedFirstName = "Ali";
+            string expectedLastName = "Usman";
+            string expectedFirstName1 = "Ulf";
+            string expectedLastName1 = "Bengtsson";
+            string expectedFirstName2 = "Umaima";
+            string expectedLastName2 = "Munir";
 
-           
+            // Act
+
+
+            People actualPeople = new People();
+            actualPeople.AddPerson(expectedFirstName, expectedLastName);
+            actualPeople.AddPerson(expectedFirstName1, expectedLastName1);
+            actualPeople.AddPerson(expectedFirstName2, expectedLastName2);
+            Person targetPerson = null;
+
+
+           Person actualPerson = actualPeople.FindById(10);
+
+
+            // Assert
+            Assert.Equal(targetPerson,actualPerson);
+
+
+
         }
 
 
