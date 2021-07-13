@@ -64,12 +64,12 @@ namespace ToDoIt.Test
 
             //Act
 
-            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+            var caughtFirstNameException = Assert.Throws<ArgumentException>(() =>
                                        new Person(expectedFirstName, expectedLastName, expectedPersonId));
 
             //Assert
 
-            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtDrinkException.Message);
+            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtFirstNameException.Message);
 
         }
         [Fact]
@@ -82,16 +82,16 @@ namespace ToDoIt.Test
 
             //Act
 
-            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+            var caughtFirstNameException = Assert.Throws<ArgumentException>(() =>
                                       new Person(expectedFirstName, expectedLastName, expectedPersonId));
 
             //Assert
 
-            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtDrinkException.Message);
+            Assert.Equal("First name can't be empty/null Please Fill the first name", caughtFirstNameException.Message);
 
         }
         [Fact]
-        public void PersonLastNameNotNull()
+        public  void PersonLastNameNotNull()
         {
             //Arrange
             string expectedFirstName = "Ali";
@@ -101,12 +101,12 @@ namespace ToDoIt.Test
 
             //Act
 
-            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+            var caughtLastNameException = Assert.Throws<ArgumentException>(() =>
                                        new Person(expectedFirstName, expectedLastName, expectedPersonId));
 
             //Assert
 
-            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtDrinkException.Message);
+            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtLastNameException.Message);
 
         }
         [Fact]
@@ -119,12 +119,12 @@ namespace ToDoIt.Test
 
             //Act
 
-            var caughtDrinkException = Assert.Throws<ArgumentException>(() =>
+            var caughtLastNameException = Assert.Throws<ArgumentException>(() =>
                                       new Person(expectedFirstName, expectedLastName, expectedPersonId));
 
             //Assert
 
-            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtDrinkException.Message);
+            Assert.Equal("Last name can't be empty/null Please Fill the last name", caughtLastNameException.Message);
 
         }
 
